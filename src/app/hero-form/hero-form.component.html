@@ -1,0 +1,28 @@
+<pre>{{ diagnostic }}</pre>
+
+<form (submit)="onSubmitted()" #heroForm="ngForm">
+
+  <div>
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" required [(ngModel)]="model.name" #name="ngModel" />
+    <section class="error" [hidden]="name.valid || name.pristine">Name is required</section>
+  </div>
+
+  <div>
+    <label for="alterEgo">Alter Ego</label>
+    <input type="text" name="alterEgo" id="alterEgo" required [(ngModel)]="model.alterEgo" #alterEgo="ngModel" />
+    <section class="error" [hidden]="alterEgo.valid || alterEgo.pristine">Alter Ego is required</section>
+  </div>
+
+  <div>
+    <label for="power">Hero Power</label>
+    <select id="power" required [(ngModel)]="model.power" name="power">
+      <option *ngFor="let p of powers" [value]="p">{{p}}</option>
+    </select>
+  </div>
+
+  <div>
+    <button type="submit" [disabled]="!heroForm.form.valid">Submit</button>
+  </div>
+
+</form>
