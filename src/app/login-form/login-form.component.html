@@ -1,0 +1,21 @@
+<pre>{{ diagnostic }}</pre>
+
+<form (submit)="onSubmitted()" #loginForm="ngForm">
+
+  <div>
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" required [(ngModel)]="model.name" #name="ngModel" />
+    <section class="error" [hidden]="name.valid || name.pristine">Name is required</section>
+  </div>
+
+  <div>
+    <label for="password">Alter Ego</label>
+    <input type="password" name="password" id="password" required [(ngModel)]="model.password" #password="ngModel" />
+    <section class="error" [hidden]="password.valid || password.pristine">Alter Ego is required</section>
+  </div>
+
+  <div>
+    <button type="submit" [disabled]="!loginForm.form.valid">Submit</button>
+  </div>
+
+</form>
